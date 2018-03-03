@@ -20,14 +20,17 @@ def send_sms(to, content):
     url = 'https://api.coolsms.co.kr/sms/2/send'
 
     data = {
+        # authentication to use coolsms api
         'api_key': api_key,
         'signature': signature.hexdigest(),
         'timestamp': timestamp,
         'salt': salt,
+        # recipient number
         'to': to,
         'from': 'sender number',
+        # content
         'text': content,
     }
 
     requests.post(url, data=data)
-    print('send message to: {}, content: {}'.format(to, content)
+    print('send message to: {}, content: {}'.format(to, content))
